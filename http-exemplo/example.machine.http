@@ -1,0 +1,52 @@
+@baseUrl = http://localhost:3000
+@tokenAdmin = COLE_AQUI_O_TOKEN_ADMIN
+@tokenUser = COLE_AQUI_O_TOKEN_USER
+@companyId = COLE_AQUI_O_ID_DA_EMPRESA
+@machineId = COLE_AQUI_O_ID_DA_MAQUINA
+
+### Criar máquina com ADMIN
+POST {{baseUrl}}/machine
+Content-Type: application/json
+Authorization: Bearer {{tokenAdmin}}
+
+{
+  "name": "Máquina Exemplo",
+  "serialNumber": "MACHINE-001",
+  "companyId": "{{companyId}}"
+}
+
+### Tentar criar máquina com USER
+POST {{baseUrl}}/machine
+Content-Type: application/json
+Authorization: Bearer {{tokenUser}}
+
+{
+  "name": "Máquina Bloqueada",
+  "serialNumber": "BLOQ-001",
+  "companyId": "{{companyId}}"
+}
+
+### Listar máquinas com ADMIN
+GET {{baseUrl}}/machine
+Authorization: Bearer {{tokenAdmin}}
+
+### Listar máquinas com USER
+GET {{baseUrl}}/machine
+Authorization: Bearer {{tokenUser}}
+
+### Buscar máquina por ID
+GET {{baseUrl}}/machine/{{machineId}}
+Authorization: Bearer {{tokenAdmin}}
+
+### Atualizar máquina com ADMIN
+PATCH {{baseUrl}}/machine/{{machineId}}
+Content-Type: application/json
+Authorization: Bearer {{tokenAdmin}}
+
+{
+  "name": "Máquina Atualizada"
+}
+
+### Remover máquina com ADMIN
+DELETE {{baseUrl}}/machine/{{machineId}}
+Authorization: Bearer {{tokenAdmin}}

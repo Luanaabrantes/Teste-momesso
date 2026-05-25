@@ -1,0 +1,49 @@
+@baseUrl = http://localhost:3000
+@tokenAdmin = COLE_AQUI_O_TOKEN_ADMIN
+@tokenUser = COLE_AQUI_O_TOKEN_USER
+@companyId = COLE_AQUI_O_ID_DA_EMPRESA
+
+### Criar empresa com ADMIN
+POST {{baseUrl}}/company
+Content-Type: application/json
+Authorization: Bearer {{tokenAdmin}}
+
+{
+  "name": "Empresa Exemplo",
+  "cnpj": "12345678000199"
+}
+
+### Tentar criar empresa com USER
+POST {{baseUrl}}/company
+Content-Type: application/json
+Authorization: Bearer {{tokenUser}}
+
+{
+  "name": "Empresa Bloqueada",
+  "cnpj": "33333333000199"
+}
+
+### Listar empresas com ADMIN
+GET {{baseUrl}}/company
+Authorization: Bearer {{tokenAdmin}}
+
+### Listar empresas com USER
+GET {{baseUrl}}/company
+Authorization: Bearer {{tokenUser}}
+
+### Buscar empresa por ID
+GET {{baseUrl}}/company/{{companyId}}
+Authorization: Bearer {{tokenAdmin}}
+
+### Atualizar empresa com ADMIN
+PATCH {{baseUrl}}/company/{{companyId}}
+Content-Type: application/json
+Authorization: Bearer {{tokenAdmin}}
+
+{
+  "name": "Empresa Atualizada"
+}
+
+### Remover empresa com ADMIN
+DELETE {{baseUrl}}/company/{{companyId}}
+Authorization: Bearer {{tokenAdmin}}

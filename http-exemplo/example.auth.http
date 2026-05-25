@@ -1,0 +1,19 @@
+@baseUrl = http://localhost:3000
+
+### Login usuário admin
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@email.com",
+  "password": "123456"
+}
+
+### Login usuário comum
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "usuario@email.com",
+  "password": "123456"
+}

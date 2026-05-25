@@ -1,0 +1,56 @@
+@baseUrl = http://localhost:3000
+@tokenAdmin = COLE_AQUI_O_TOKEN_ADMIN
+@tokenUser = COLE_AQUI_O_TOKEN_USER
+@companyId = COLE_AQUI_O_ID_DA_EMPRESA
+@userId = COLE_AQUI_O_ID_DO_USUARIO
+
+### Criar usuário com ADMIN
+POST {{baseUrl}}/user
+Content-Type: application/json
+Authorization: Bearer {{tokenAdmin}}
+
+{
+  "name": "Usuário Exemplo",
+  "email": "usuario.exemplo@email.com",
+  "password": "123456",
+  "role": "USER",
+  "companyId": "{{companyId}}"
+}
+
+### Tentar criar usuário com USER
+POST {{baseUrl}}/user
+Content-Type: application/json
+Authorization: Bearer {{tokenUser}}
+
+{
+  "name": "Usuário Bloqueado",
+  "email": "usuario.bloqueado@email.com",
+  "password": "123456",
+  "role": "USER",
+  "companyId": "{{companyId}}"
+}
+
+### Listar usuários com ADMIN
+GET {{baseUrl}}/user
+Authorization: Bearer {{tokenAdmin}}
+
+### Listar usuários com USER
+GET {{baseUrl}}/user
+Authorization: Bearer {{tokenUser}}
+
+### Buscar usuário por ID
+GET {{baseUrl}}/user/{{userId}}
+Authorization: Bearer {{tokenAdmin}}
+
+### Atualizar usuário com ADMIN
+PATCH {{baseUrl}}/user/{{userId}}
+Content-Type: application/json
+Authorization: Bearer {{tokenAdmin}}
+
+{
+  "name": "Usuário Atualizado"
+}
+
+### Remover usuário com ADMIN
+DELETE {{baseUrl}}/user/{{userId}}
+Authorization: Bearer {{tokenAdmin}}
