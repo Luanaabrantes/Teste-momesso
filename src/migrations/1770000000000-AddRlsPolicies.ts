@@ -84,3 +84,4 @@ export class AddRlsPolicies1770000000000 implements MigrationInterface {
     `);
   }
 }
+
