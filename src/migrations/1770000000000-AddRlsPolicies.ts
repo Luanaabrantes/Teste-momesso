@@ -1,7 +1,7 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export class AddRlsPolicies1770000000000 implements MigrationInterface {
-  name = 'AddRlsPolicies1770000000000';
+export class AddRlsPolicies1779572113536 implements MigrationInterface {
+  name = 'AddRlsPolicies1779572113536';
 
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(`
